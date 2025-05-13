@@ -113,23 +113,30 @@
   </div>
 
   <script>
+  <script>
   function redirect(e) {
     e.preventDefault();
     const name = document.getElementById('nameInput').value.trim();
     if (!name) return;
 
     const firstLetter = name.charAt(0).toLowerCase();
+
+    // ✅ DEBUG LOGS
+    console.log("Name entered:", name);
+    console.log("First letter extracted:", firstLetter);
+
     let targetURL = "";
 
     if (['s', 'a'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photosss/"; // ✨ Your first link
+      targetURL = "https://yashjijikno.github.io/photosss/";
     } else if (['y', 'm', 'g'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photos/"; // 💘 Your second link
+      targetURL = "https://yashjijikno.github.io/photos/";
     } else {
       alert("Name not in the romantic list 🤔❤️");
       return;
     }
 
+    console.log("Opening URL:", targetURL);
     window.open(targetURL, '_blank');
   }
     // Particle Background
