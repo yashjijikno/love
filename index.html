@@ -122,9 +122,9 @@
     let targetURL = "";
 
     if (['s', 'a'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photosss/"; // ✨ Your first link
+      targetURL = "file:///D:/Desktop/photos.html"; // ✨ Your first link
     } else if (['y', 'm', 'g'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photos/"; // 💘 Your second link
+      targetURL = "file:///D:/Desktop/photos.html"; // 💘 Your second link
     } else {
       alert("Name not in the romantic list 🤔❤️");
       return;
@@ -172,7 +172,7 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = rgba(255, 255, 255, ${this.alpha});
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
         ctx.fill();
       }
     }
