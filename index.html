@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>someone special❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+      background: linear-gradient(135deg, #f54e9c, #fa98f8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      filter: blur(4px);
+      opacity: 0.4;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      width: 300px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    button {
+      background: #ff6f61;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 78, 80, 0.6);
+    }
+
+    button:hover {
+      background: #b57edc;
+      transform: scale(1.05);
+    }
+
+    .heart {
+      font-size: 50px;
+      color: #fff;
+      animation: heartbeat 1.2s infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+
+  <div class="container">
+    <div class="heart"></div>
+    <h1>Enter your name here</h1>
+    <form onsubmit="redirect(event)">
+      <input type="text" id="nameInput" placeholder="Your name..." required />
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+
+  <script>
+  function redirect(e) {
+    e.preventDefault();
+    const name = document.getElementById('nameInput').value.trim();
+    if (!name) return;
+
+    const firstLetter = name.charAt(0).toLowerCase();
+    let targetURL = "";
+
+    if (['s', 'a'].includes(firstLetter)) {
+      targetURL = "file:///D:/Desktop/photos.html"; // ✨ Your first link
+    } else if (['y', 'm', 'g'].includes(firstLetter)) {
+      targetURL = "file:///D:/Desktop/photos.html"; // 💘 Your second link
+    } else {
+      alert("Name not in the romantic list 🤔❤️");
+      return;
+    }
+
+    window.open(targetURL, '_blank');
+  }
+    // Particle Background
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 8 + 2;
+        this.alpha = Math.random() * 0.5 + 0.2;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) {
+      particles.push(new Particle());
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+  </script>
+</body>
+</html>
