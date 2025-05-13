@@ -122,16 +122,15 @@
     let targetURL = "";
 
     if (['s'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photosss/"; // ✨ Your first link
-    } else if (['y', 'm', 'g'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photos/"; // 💘 Your second link
-    } 
-      else if (['b'].includes(firstLetter)) {
-      targetURL = "https://yashjijikno.github.io/photos/"; // 💘 Your second link
-    else {
-      alert("Name not in the romantic list 🤔❤️");
-      return;
-    }
+  targetURL = "https://yashjijikno.github.io/photosss/"; // ✨ Your first link
+} else if (['y', 'm', 'g'].includes(firstLetter)) {
+  targetURL = "https://yashjijikno.github.io/photos/"; // 💘 Your second link
+} else if (['b'].includes(firstLetter)) {
+  targetURL = "https://yashjijikno.github.io/photos/"; // 💘 Your second link
+} else {
+  alert("Name not in the romantic list 🤔❤️");
+  return;
+}
 
     window.open(targetURL, '_blank');
   }
